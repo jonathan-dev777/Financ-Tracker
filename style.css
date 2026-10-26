@@ -1,0 +1,492 @@
+
+/* =========================
+   1. COLOR SYSTEM
+========================= */
+
+:root {
+    /* Backgrounds */
+    --background: #f5f7fa;
+    --background-secondary: #eef2f7;
+    --background-tertiary: #e5eaf1;
+    --background-hover: #f1f5f9;
+    --background-active: #e2e8f0;
+    --background-overlay: #11182780;
+
+    /* Cards */
+    --card: #ffffff;
+    --card-secondary: #f8fafc;
+    --card-hover: #f9fafb;
+
+    /* Text */
+    --text: #111827;
+    --secondary-text: #6b7280;
+    --text-secondary: #6b7280;
+    --text-tertiary: #9ca3af;
+    --text-inverse: #ffffff;
+    --text-disabled: #9ca3af;
+
+    /* Borders */
+    --border: #e5e7eb;
+    --border-secondary: #d1d5db;
+    --border-strong: #9ca3af;
+    --border-focus: #2563eb;
+
+    /* Primary */
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --primary-active: #1e40af;
+    --primary-light: #dbeafe;
+
+    /* Income */
+    --income: #16a34a;
+    --income-light: #dcfce7;
+    --income-hover: #15803d;
+    --income-text: #166534;
+
+    /* Expenses */
+    --expense: #dc2626;
+    --expense-light: #fee2e2;
+    --expense-hover: #b91c1c;
+    --expense-text: #991b1b;
+
+    /* Table */
+    --table-header: #f3f4f6;
+    --table-row: #ffffff;
+    --table-row-alternate: #f8fafc;
+    --table-row-hover: #f1f5f9;
+    --table-border: #d1d5db;
+
+    /* Inputs */
+    --input-background: #ffffff;
+    --input-background-hover: #f9fafb;
+    --input-background-disabled: #f3f4f6;
+    --input-border: #d1d5db;
+    --input-border-focus: #2563eb;
+
+    /* Status */
+    --success: #15803d;
+    --success-background: #dcfce7;
+    --warning: #d97706;
+    --warning-background: #fef3c7;
+    --danger: #b91c1c;
+    --danger-background: #fee2e2;
+    --info: #2563eb;
+    --info-background: #dbeafe;
+
+    /* Effects */
+    --muted: #9ca3af;
+    --disabled-background: #f3f4f6;
+    --shadow: #00000014;
+    --shadow-strong: #00000026;
+    --focus-ring: #93c5fd;
+
+    /* Layout */
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+    --content-width: 1100px;
+}
+
+
+/* =========================
+   2. GLOBAL STYLES
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 40px 24px;
+    background-color: var(--background);
+    color: var(--text);
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, sans-serif;
+    line-height: 1.5;
+}
+
+h1,
+h2,
+p {
+    margin-top: 0;
+}
+
+h1,
+h2 {
+    letter-spacing: -0.03em;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+
+/* =========================
+   3. HEADER
+========================= */
+
+header {
+    max-width: var(--content-width);
+    margin: 0 auto 36px;
+    text-align: center;
+}
+
+header h1 {
+    margin-bottom: 8px;
+    color: var(--text);
+    font-size: clamp(28px, 4vw, 38px);
+    font-weight: 750;
+}
+
+header p {
+    margin-bottom: 0;
+    color: var(--secondary-text);
+    font-size: 16px;
+}
+
+
+/* =========================
+   4. FINANCIAL OVERVIEW
+========================= */
+
+.financial-overview {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: var(--content-width);
+    margin: 0 auto 32px;
+}
+
+.card {
+    min-width: 0;
+    padding: 24px;
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 4px 12px var(--shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px var(--shadow);
+}
+
+.card h2 {
+    margin-bottom: 12px;
+    color: var(--secondary-text);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0;
+}
+
+.card p {
+    margin-bottom: 0;
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 750;
+    letter-spacing: -0.04em;
+    overflow-wrap: anywhere;
+}
+
+.balance {
+    color: var(--text);
+}
+
+.income {
+    color: var(--income);
+}
+
+.expense {
+    color: var(--expense);
+}
+
+
+/* =========================
+   5. TRANSACTIONS SECTION
+========================= */
+
+.transactions {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+    width: 100%;
+    max-width: var(--content-width);
+    margin: 0 auto;
+}
+
+
+/* =========================
+   6. ADD TRANSACTION FORM
+========================= */
+
+.add-transaction {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 16px;
+    padding: 28px;
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 4px 12px var(--shadow);
+}
+
+.add-transaction-title {
+    grid-column: 1 / -1;
+    margin: 0 0 8px;
+    color: var(--text);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.add-transaction label {
+    align-self: end;
+    margin-top: 4px;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.description,
+.amount,
+.type {
+    width: 100%;
+    min-width: 0;
+    min-height: 46px;
+    padding: 11px 13px;
+    color: var(--text);
+    background-color: var(--input-background);
+    border: 1px solid var(--input-border);
+    border-radius: var(--radius-sm);
+    box-shadow: none;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.description:hover,
+.amount:hover,
+.type:hover {
+    border-color: var(--border-strong);
+}
+
+.description:focus,
+.amount:focus,
+.type:focus {
+    border-color: var(--input-border-focus);
+    box-shadow: 0 0 0 3px var(--focus-ring);
+}
+
+.description::placeholder,
+.amount::placeholder {
+    color: var(--text-tertiary);
+}
+
+.type {
+    cursor: pointer;
+}
+
+/* Native select option styling can vary by browser. */
+.option-income {
+    color: var(--income-text);
+}
+
+.option-expense {
+    color: var(--expense-text);
+}
+
+
+/* =========================
+   7. ADD TRANSACTION BUTTON
+========================= */
+
+#add-transaction-button {
+    grid-column: 1 / -1;
+    min-height: 48px;
+    margin-top: 8px;
+    padding: 12px 18px;
+    color: var(--text-inverse);
+    background-color: var(--primary);
+    border: none;
+    border-radius: var(--radius-sm);
+    font-weight: 650;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+#add-transaction-button:hover {
+    background-color: var(--primary-hover);
+}
+
+#add-transaction-button:active {
+    background-color: var(--primary-active);
+    transform: scale(0.99);
+}
+
+#add-transaction-button:focus-visible {
+    outline: 3px solid var(--focus-ring);
+    outline-offset: 3px;
+}
+
+
+/* =========================
+   8. TRANSACTION HISTORY
+========================= */
+
+.transaction-history {
+    margin: 8px 0 -8px;
+    color: var(--text);
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.transaction-table {
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+    background-color: var(--table-row);
+    border: 1px solid var(--border);
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: var(--radius-md);
+    box-shadow: 0 4px 12px var(--shadow);
+    text-align: left;
+}
+
+.transaction-table th,
+.transaction-table td {
+    padding: 15px 18px;
+    border-right: 1px solid var(--table-border);
+    border-bottom: 1px solid var(--table-border);
+    vertical-align: middle;
+}
+
+.transaction-table th:last-child,
+.transaction-table td:last-child {
+    border-right: none;
+}
+
+.transaction-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.transaction-table th {
+    color: var(--secondary-text);
+    background-color: var(--table-header);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.transaction-table td {
+    color: var(--text);
+    font-size: 14px;
+}
+
+.transaction-table tbody tr:nth-child(even) {
+    background-color: var(--table-row-alternate);
+}
+
+.transaction-table tbody tr:hover {
+    background-color: var(--table-row-hover);
+}
+
+/* Number and amount alignment */
+.transaction-table th:first-child,
+.transaction-table td:first-child {
+    width: 64px;
+    text-align: center;
+}
+
+.transaction-table th:nth-child(4),
+.transaction-table td:nth-child(4) {
+    text-align: right;
+    white-space: nowrap;
+}
+
+
+/* =========================
+   9. RESPONSIVE DESIGN
+========================= */
+
+@media (max-width: 760px) {
+    body {
+        padding: 28px 16px;
+    }
+
+    .financial-overview {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .card p {
+        font-size: 28px;
+    }
+
+    .add-transaction {
+        padding: 22px;
+    }
+
+    /* Allow the table to scroll horizontally on small screens. */
+    .transactions {
+        min-width: 0;
+    }
+
+    .transaction-table {
+        display: block;
+        max-width: 100%;
+        overflow-x: auto;
+    }
+
+    .transaction-table th,
+    .transaction-table td {
+        padding: 12px;
+    }
+}
+
+@media (max-width: 440px) {
+    body {
+        padding: 24px 12px;
+    }
+
+    header {
+        margin-bottom: 26px;
+    }
+
+    .add-transaction {
+        grid-template-columns: 1fr;
+        padding: 18px;
+    }
+
+    .add-transaction-title,
+    #add-transaction-button {
+        grid-column: auto;
+    }
+
+    .transaction-history {
+        font-size: 20px;
+    }
+}
+
+/* Respect users who prefer reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
