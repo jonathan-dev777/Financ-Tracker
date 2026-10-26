@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financ-Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Personal Finance Tracker</h1>
+        <p>Manage your money easily</p>
+    </header>
+
+    <section class="financial-overview">
+        <div class="card">
+            <h2>Balance</h2>
+            <p id="balance" class="balance">
+                0 €
+            </p>
+        </div>
+        <div class="card">
+            <h2>Income</h2>
+            <p id="income" class="income">
+                0 €
+            </p>
+        </div>
+        <div class="card">
+            <h2>Expenses</h2>
+            <p id="expenses" class="expense">
+                0 €
+            </p>
+        </div>
+    </section>
+    <section class="transactions">
+        <div class="add-transaction">
+            <h2 class="add-transaction-title">ADD TRANSACTIONS</h2>
+            <label for="description">Description:</label>
+            <input type="text" id="description" placeholder="Your Description" class="description">
+
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" placeholder="Your Amount" class="amount">
+
+            <label for="type">Type:</label>
+            <select id="type" class="type">
+                <option value="income" class="option-income">Income</option>
+                <option value="expense" class="option-expense">Expense</option>
+            </select>
+            <button id="add-transaction-button">Add Transaction</button>
+
+        </div>
+        <h2 class="transaction-history">Transaction History</h2>
+        <table class="transaction-table">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Amount</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody id="transaction-history">
+
+            </tbody>
+        </table>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>
